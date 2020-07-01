@@ -24,7 +24,7 @@ trait SkillDashboardModel {
 
   def users:Seq[User]
   def skills:Seq[Skill]
-  def userSkills:Seq[Seq[UserSkill]]
+  def userSkills:Seq[UserSkill]
   def skillGroups:Seq[SkillGroup]
 }
 

@@ -1,6 +1,6 @@
-@(users:Seq[User], skills:Seq[Skill], skillGroups:Seq[SkillGroup])
+@(users:Seq[User], skills:Seq[Skill], skillGroups:Seq[SkillGroup], usersSkills:Seq[UserSkill])
 
 @main("Skills dashboard") {
   <h1>Skills dashboard</h1>
-  @mainSkillsTable(users, skills, skillGroups)
+  @mainSkillsTable(users, skills, skillGroups,usersSkills)
 }

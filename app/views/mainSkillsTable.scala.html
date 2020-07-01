@@ -1,20 +1,25 @@
-@(users: Seq[User], skills:Seq[Skill], skillGroups:Seq[SkillGroup])
+@(users: Seq[User], skills:Seq[Skill], skillGroups:Seq[SkillGroup], usersSkills:Seq[UserSkill])
 
-<table class="table table-bordered table-hover bg-primary">
+<table class="table table-bordered table-hover">
     <tr>
         <td></td>
         @for(user <- users) {
-            <th>@user.firstName @user.familyName</th>
+            <th class="userTableRow">@user.firstName @user.familyName</th>
         }
     </tr>
     @for(sg <- skillGroups){
-        <tr>
-            <th>@sg.name</th>
+        <tr >
+            <th colspan="100%" class="skillGroupTableRow" >@sg.name</th>
         </tr>
         @for(skill <- sg.skills){
         <tr>
-            <th>@skill.name</th>
+            <th class="skillTableTitle" >@skill</th>
+            @for(user <- users){
+                <td>
+                    @usersSkills.find(x => x.skillId == skill && x.userId == user.id ).getOrElse(UserSkill("NULL","","",0)).level
+                </td>
 
+            }
         </tr>
         }
     }

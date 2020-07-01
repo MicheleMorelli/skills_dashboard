@@ -1,4 +1,19 @@
 
-th {
-    color: white;
+body * {
+    color: #131515;
+}
+
+th.userTableRow {
+    color: #fffafb;
+    background-color: #339989;
+}
+
+th.skillGroupTableRow {
+    color: #339989;
+    background-color: #7DE2D1;
+}
+
+
+th.skillTableTitle {
+    background-color: lightgray;
 }
