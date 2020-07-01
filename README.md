@@ -3,6 +3,6 @@
 
 Hack day July 1st 2020
 
-
+![Skills dashboard](skills_dashboard.png)
 
 
