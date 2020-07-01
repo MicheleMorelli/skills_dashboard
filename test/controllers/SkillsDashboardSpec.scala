@@ -2,7 +2,7 @@ package controllers
 
 
 import org.scalatest._
-import org.scalatest.matchers.must.Matchers
+import org.scalatest.matchers.should.Matchers
 
-class SkillsDashboardSpec extends flatspec.AnyFlatSpec with Matchers {
+class SkillsDashboardSpec extends FlatSpec with Matchers {
 }
