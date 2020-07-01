@@ -15,6 +15,7 @@ class SkillsDashboard @Inject()(val controllerComponents: ControllerComponents) 
   }
 
   def getAllUsers(): Action[AnyContent] = Action.async {
-    Ok(Json.toJson(""))
+    val DS = SkillsDashboardInMemoryModel()
+    Ok(Json.toJson())
   }
 }

@@ -2,7 +2,7 @@ package models.SkillDashboard
 
 import models.{Skill, SkillGroup, User, UserSkill}
 
-class SkillsDashboardInMemoryModel extends SkillDashboardModel {
+class SkillDashboardInMemoryModel extends SkillDashboardModel {
   val dataSource = DummyDataset
 
   override def users: Seq[User] = dataSource.users
