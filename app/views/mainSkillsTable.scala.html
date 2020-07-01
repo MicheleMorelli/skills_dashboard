@@ -1,10 +1,10 @@
 @(users: Seq[User])
 
-<table>
+<table class="table table-bordered table-hover bg-primary">
     <tr>
         <td></td>
         @for(user <- users) {
-            <td>@user.firstName @user.familyName</td>
+            <th>@user.firstName @user.familyName</th>
         }
     </tr>
 
