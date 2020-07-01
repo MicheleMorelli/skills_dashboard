@@ -20,4 +20,16 @@ class SkillsDashboard @Inject()(val cc: ControllerComponents, sdm: SkillDashboar
   def getAllUsers: Action[AnyContent] = Action.async {
     sdm.getAllUsers.map(x => Ok(Json.toJson(x)))
   }
+
+  def getAllUserSkills: Action[AnyContent] = Action.async {
+    sdm.getAllUserSkills.map(x => Ok(Json.toJson(x)))
+  }
+
+  def getAllSkills: Action[AnyContent] = Action.async {
+    sdm.getAllSkills.map(x => Ok(Json.toJson(x)))
+  }
+
+  def getAllSkillGroups: Action[AnyContent] = Action.async {
+    sdm.getAllSkillGroups.map(x => Ok(Json.toJson(x)))
+  }
 }
