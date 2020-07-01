@@ -7,18 +7,25 @@ import scala.concurrent.Future
 trait SkillDashboardModel {
 
   def getAllUsers: Future[Seq[User]] = {
-    Future.successful(allUsers)
+    Future.successful(users)
   }
 
   def getAllSkills: Future[Seq[Skill]] = {
-    Future.successful(allSkills)
+    Future.successful(skills)
   }
 
-  def getAllUserSkills: Future[Seq[UserSkill]]
+  def getAllUserSkills: Future[Seq[Seq[UserSkill]]] = {
+    Future.successful(userSkills)
+  }
 
-  def getAllSkillGroups: Future[Seq[SkillGroup]]
+  def getAllSkillGroups: Future[Seq[SkillGroup]] = {
+    Future.successful(skillGroups)
+  }
 
-def allUsers:Seq[User]
+  def users:Seq[User]
+  def skills:Seq[Skill]
+  def userSkills:Seq[Seq[UserSkill]]
+  def skillGroups:Seq[SkillGroup]
 }
 
 

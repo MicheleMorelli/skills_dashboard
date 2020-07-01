@@ -2,14 +2,14 @@ package models.SkillDashboard
 
 import models.{Skill, SkillGroup, User, UserSkill}
 
-class SkillsDashboardInMemoryModel {
+class SkillsDashboardInMemoryModel extends SkillDashboardModel {
   val dataSource = DummyDataset
 
-  def getUsers: Seq[User] = dataSource.users
+  override def users: Seq[User] = dataSource.users
 
-  def getSkills: Seq[Skill] = dataSource.skills
+  override def skills: Seq[Skill] = dataSource.skills
 
-  def getUserSkills: Seq[Seq[UserSkill]] = dataSource.usersSkills
+  override def userSkills: Seq[Seq[UserSkill]] = dataSource.usersSkills
 
-  def getSkillGroups: Seq[SkillGroup] = dataSource.skillGroups
+  override def skillGroups: Seq[SkillGroup] = dataSource.skillGroups
 }
