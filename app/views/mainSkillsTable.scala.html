@@ -11,12 +11,15 @@
         <tr >
             <th colspan="100%" class="skillGroupTableRow" >@sg.name</th>
         </tr>
-        @for(skill <- sg.skills){
+        @for(skillId <- sg.skills){
         <tr>
-            <th class="skillTableTitle" >@skill</th>
+            <th class="skillTableTitle" >
+                @skills.find(_.id == skillId).getOrElse(Skill("NULL", "SKILL_NOT_FOUND")).name
+            </th>
+
             @for(user <- users){
                 <td>
-                    @usersSkills.find(x => x.skillId == skill && x.userId == user.id ).getOrElse(UserSkill("NULL","","",0)).level
+                    @usersSkills.find(x => x.skillId == skillId && x.userId == user.id ).getOrElse(UserSkill("NULL","","",0)).level
                 </td>
 
             }
