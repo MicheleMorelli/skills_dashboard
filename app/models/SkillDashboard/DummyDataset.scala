@@ -3,6 +3,7 @@ package models.SkillDashboard
 import models.{Skill, SkillDashboardResource, SkillGroup, User, UserSkill}
 
 import scala.collection.mutable.ArrayBuffer
+import scala.util.Random
 
 object DummyDataset {
 
@@ -12,13 +13,13 @@ object DummyDataset {
 
   def skills: Seq[Skill] = skillsBuffer.toSeq
 
-  def usersSkills: Seq[Seq[UserSkill]] = userSkillsBuffer.toSeq
+  def usersSkills: Seq[UserSkill] = userSkillsBuffer.toSeq
 
   def skillGroups: Seq[SkillGroup] = skillGroupsBuffer.toSeq
 
   private val usersBuffer: ArrayBuffer[User] = new ArrayBuffer[User]()
   private val skillsBuffer: ArrayBuffer[Skill] = new ArrayBuffer[Skill]()
-  private val userSkillsBuffer: ArrayBuffer[Seq[UserSkill]] = new ArrayBuffer[Seq[UserSkill]]()
+  private val userSkillsBuffer: ArrayBuffer[UserSkill] = new ArrayBuffer[UserSkill]()
   private val skillGroupsBuffer: ArrayBuffer[SkillGroup] = new ArrayBuffer[SkillGroup]()
 
 
@@ -37,18 +38,13 @@ object DummyDataset {
   private val SG3: SkillGroup = SkillGroup("SG3", "Various", getId(S6,S7))
   for (s <- Seq(SG1, SG2, SG3)) skillGroupsBuffer.append(s)
 
-  private val S1_US: Seq[UserSkill] = ()
-  private val S2_US: Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S2, _))
-  private val S3_US: Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S3, _))
-  private val S4_US: Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S4, _))
-  private val S5_US: Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S5, _))
-  private val S6_US: Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S6, _))
-  private val S7_US: Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S7, _))
-  for (s <- Seq(S1_US, S2_US, S3_US, S4_US, S5_US, S6_US, S7_US)) userSkillsBuffer.append(s)
 
-  private val U1: User = User("tomsmith1", "Tom", "Smith", Seq(S1_US(3), S2_US(4), S3_US(2), S4_US(1)))
-  private val U2: User = User("susanblack1", "Susan", "Black", Seq(S1_US(5), S2_US(3), S3_US(1), S4_US(4), S5_US(4), S6_US(2)))
+  private val U1: User = User("tomsmith1", "Tom", "Smith")
+  private val U2: User = User("susanblack1", "Susan", "Black")
   for (s <- Seq(U1, U2)) usersBuffer.append(s)
+
+  private val uss:Seq[UserSkill] = for (user <- users; skill <- skills) yield UserSkill(s"${user.id}_${skill.id}", skill.id,user.id,Random.nextInt(MAX_LEVEL))
+  for (s <- uss) userSkillsBuffer.append(s)
 
   private def getId(user: SkillDashboardResource*):Seq[String] = user.map(_.id)
 }
