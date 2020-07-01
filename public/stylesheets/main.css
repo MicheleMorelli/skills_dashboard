@@ -3,6 +3,7 @@ body * {
     color: #131515;
 }
 
+td.userTableRow,
 th.userTableRow {
     color: #fffafb;
     background-color: #339989;
