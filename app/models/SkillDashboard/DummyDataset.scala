@@ -5,6 +5,9 @@ import models.{Skill, SkillGroup, User, UserSkill}
 import scala.collection.mutable.ArrayBuffer
 
 object DummyDataset {
+
+  final val MAX_LEVEL = 5
+
   def users: Seq[User] = usersBuffer.toSeq
   def skills: Seq[Skill] = skillsBuffer.toSeq
   def usersSkills: Seq[UserSkill] = usersSkillsBuffer.toSeq
@@ -30,4 +33,13 @@ object DummyDataset {
   private val S7:Skill = Skill("S7", "Public speaking", SG3)
   for (s <- Seq(S1,S2,S3,S4, S5,S6,S7)) skillsBuffer.append(s)
 
+  private val S1_US:Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S1, _))
+  private val S2_US:Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S2, _))
+  private val S3_US:Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S3, _))
+  private val S4_US:Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S4, _))
+  private val S5_US:Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S5, _))
+  private val S6_US:Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S6, _))
+  private val S7_US:Seq[UserSkill] = (0 to MAX_LEVEL).map(UserSkill(S7, _))
+
+  //private val U1:User = User("tomsmith1", "Tom", "Smith", Seq[])
 }
