@@ -1,5 +1,5 @@
-@(users: Seq[User], skills:Seq[Skill], skillGroups:Seq[SkillGroup], usersSkills:Seq[UserSkill])
-
+@(users: Seq[User], skills: Seq[Skill], skillGroups: Seq[SkillGroup], usersSkills: Seq[UserSkill])
+@import java.math.BigInteger; var level = 0;
 <table class="table table-bordered table-hover">
     <tr >
         <td class="userTableRow" ></td>
@@ -7,24 +7,33 @@
             <th class="userTableRow">@user.firstName @user.familyName</th>
         }
     </tr>
-    @for(sg <- skillGroups){
-        <tr >
+    @for(sg <- skillGroups) {
+        <tr>
             <th colspan="100%" class="skillGroupTableRow" >@sg.name</th>
         </tr>
-        @for(skillId <- sg.skills){
-        <tr>
-            <th class="skillTableTitle" >
+        <tbody >
+        @for(skillId <- sg.skills) {
+            <tr>
+                <th class="skillTableTitle" >
                 @skills.find(_.id == skillId).getOrElse(Skill("NULL", "SKILL_NOT_FOUND")).name
-            </th>
+                </th>
 
-            @for(user <- users){
-                <td>
-                    @usersSkills.find(x => x.skillId == skillId && x.userId == user.id ).getOrElse(UserSkill("NULL","","",0)).level
-                </td>
+                @for(user <- users) {
+                    <td>
+                        @{
+                            level = usersSkills.find(x => x.skillId == skillId && x.userId == user.id).getOrElse(UserSkill("NULL", "", "", 0)).level
+                        }
+                        @for(i <- 0 to level) {
+                            <i class="fa fa-star skillStar" aria-hidden="true"></i>
+                        }
+                    </td>
 
-            }
-        </tr>
-        }
+
+                }
+
+            </tr>
+        </tbody>
+    }
     }
 
 </table>

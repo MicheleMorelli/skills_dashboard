@@ -18,3 +18,9 @@ th.skillGroupTableRow {
 th.skillTableTitle {
     background-color: lightgray;
 }
+
+.skillStar {
+    color: darkorange;
+    font-size: 1.1em;
+
+}
