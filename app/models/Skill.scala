@@ -5,8 +5,7 @@ import play.api.libs.json.{Format, Json}
 case class Skill(
                   id: String,
                   name: String,
-                  skillGroup: SkillGroup
-                )
+                ) extends SkillDashboardResource
 
 
 object Skill {

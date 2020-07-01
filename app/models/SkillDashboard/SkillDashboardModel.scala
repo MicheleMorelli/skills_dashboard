@@ -14,7 +14,7 @@ trait SkillDashboardModel {
     Future.successful(skills)
   }
 
-  def getAllUserSkills: Future[Seq[Seq[UserSkill]]] = {
+  def getAllUserSkills: Future[Seq[UserSkill]] = {
     Future.successful(userSkills)
   }
 

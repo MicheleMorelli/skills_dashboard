@@ -1,4 +1,4 @@
-@(users: Seq[User])
+@(users: Seq[User], skills:Seq[Skill], skillGroups:Seq[SkillGroup])
 
 <table class="table table-bordered table-hover bg-primary">
     <tr>
@@ -7,5 +7,16 @@
             <th>@user.firstName @user.familyName</th>
         }
     </tr>
+    @for(sg <- skillGroups){
+        <tr>
+            <th>@sg.name</th>
+        </tr>
+        @for(skill <- sg.skills){
+        <tr>
+            <th>@skill.name</th>
+
+        </tr>
+        }
+    }
 
 </table>
