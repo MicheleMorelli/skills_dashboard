@@ -14,7 +14,7 @@ class SkillsDashboard @Inject()(val cc: ControllerComponents, sdm: SkillDashboar
   extends AbstractController(cc) {
 
   def index(): Action[AnyContent] = Action {
-    Ok(views.html.index())
+    Ok(views.html.index(sdm.users))
   }
 
   def getAllUsers: Action[AnyContent] = Action.async {

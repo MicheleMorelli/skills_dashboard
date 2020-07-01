@@ -1,6 +1,11 @@
-@(users:Seq[User], skills:Seq[Skill], skillGroups: Seq[SkillGroup] )
+@(users: Seq[User])
 
 <table>
-
+    <tr>
+        <td></td>
+        @for(user <- users) {
+            <td>@user.firstName @user.familyName</td>
+        }
+    </tr>
 
 </table>

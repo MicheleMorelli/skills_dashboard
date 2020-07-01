@@ -1,6 +1,6 @@
-@()
+@(users:Seq[User])
 
 @main("Skills dashboard") {
   <h1>Skills dashboard</h1>
-
+  @mainSkillsTable(users)
 }
