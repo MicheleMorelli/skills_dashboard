@@ -1,3 +1,6 @@
 package models
 
-case class SkillGroup()
+case class SkillGroup(
+                     id: String,
+                     name: String
+                     )
