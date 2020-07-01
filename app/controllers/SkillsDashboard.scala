@@ -1,21 +1,23 @@
 package controllers
 
 import javax.inject._
+import models.SkillDashboard.SkillDashboardModel
 import play.api._
 import play.api.libs.json.Json
-import play.api.mvc._
+import play.api.mvc.{AbstractController, Action, AnyContent, ControllerComponents}
 
-import scala.concurrent.Future
+import scala.concurrent.ExecutionContext
 
 @Singleton
-class SkillsDashboard @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class SkillsDashboard @Inject()(val cc: ControllerComponents, sdm: SkillDashboardModel)
+                               (implicit ec:ExecutionContext)
+  extends AbstractController(cc) {
 
-  def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+  def index(): Action[AnyContent] = Action {
     Ok(views.html.index())
   }
 
-  def getAllUsers(): Action[AnyContent] = Action.async {
-    val DS = SkillsDashboardInMemoryModel()
-    Ok(Json.toJson())
+  def getAllUsers: Action[AnyContent] = Action.async {
+    sdm.getAllUsers.map(x => Ok(Json.toJson(x)))
   }
 }
